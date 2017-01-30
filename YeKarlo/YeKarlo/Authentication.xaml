@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YeKarlo.Authentication">
+  <StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="20">
+    <Entry x:Name="usrName" Placeholder="User Name" />
+    <Entry x:Name="pass" Placeholder="Password" />
+    <Button x:Name="btnLogin" Text="Login"/>
+  </StackLayout>
+
+</ContentPage>
