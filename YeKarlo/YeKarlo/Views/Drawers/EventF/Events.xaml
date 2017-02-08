@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YeKarlo.Views.Drawers.EventF.Events">
+  <StackLayout Padding="10" Orientation="Vertical">
+    <ListView x:Name="EventList" HasUnevenRows="True">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <Frame HasShadow="True" BackgroundColor="#E5E8E8">
+              <Grid>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="Auto"/>
+                  <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <BoxView Grid.RowSpan="3" Grid.ColumnSpan="3" Color="#ffffff">
+                  <BoxView.GestureRecognizers>
+                    <TapGestureRecognizer
+                            Tapped="OnTapGestureRecognizer"
+                            NumberOfTapsRequired="1" />
+                  </BoxView.GestureRecognizers>
+                </BoxView>
+                <Label Text="{Binding Title}" Grid.Row="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Column="1" FontSize="25"/>
+                <Label Text="{Binding EventDatetime}" Grid.Row="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Column="1"/>
+                <Label Text="{Binding Venue}" Grid.Row="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Column="1" FontSize="17"/>
+              </Grid>
+            </Frame>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+</ContentPage>

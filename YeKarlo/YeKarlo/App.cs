@@ -11,7 +11,8 @@ namespace YeKarlo
     {
         public App()
         {
-            MainPage = new NavigationPage(new Authentication());
+            //MainPage = new NavigationPage(new Views.Drawers.EventF.Events());
+            MainPage = new NavigationPage(new Auth.Authentications());
         }
 
         protected override void OnStart()

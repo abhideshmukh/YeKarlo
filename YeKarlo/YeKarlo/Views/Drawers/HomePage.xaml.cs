@@ -5,36 +5,40 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
+namespace YeKarlo.Views.Drawers
+    
 
-namespace YeKarlo
 {
-    public partial class Courses : ContentPage
+    
+    public partial class HomePage : ContentPage
     {
-        string getCourseApi = "http://yekarlo.hol.es/Controller/GetCourses.php";
-        public Courses()
+        string getCourseApi = "yyyyyyyyyyyyyy";
+         public HomePage()
         {
             InitializeComponent();
-          
+            
         }
-
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            Device.BeginInvokeOnMainThread(async () => {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                
 
                 var getData = await GJson();
                 lView.ItemsSource = getData;
 
+                string myId = Auth.Constants.MyDetails.id;
+
             });
         }
+
 
         private async Task<List<Datum>> GJson()
         {
             HttpClient webClient = new HttpClient();
-            
             string result = await webClient.GetStringAsync(getCourseApi);
 
 

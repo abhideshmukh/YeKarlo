@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YeKarlo
+namespace YeKarlo.Auth
 {
     
 
-public class LDatum
+public class Result
     {
         public string id { get; set; }
         public string fname { get; set; }

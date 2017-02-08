@@ -8,16 +8,17 @@ using Newtonsoft.Json;
 
 using Xamarin.Forms;
 
-namespace YeKarlo
+namespace YeKarlo.Auth
 {
-    public partial class Authentication : ContentPage
+    public partial class Authentications : ContentPage
     {
         string UserName, Password;
-        string result;
-        string baseUrl = "http://yekarlo.hol.es/Controller/authenticate.php?username=";
+        //string baseUrl = "xxxxxxxxxxxxxxxxxxxx";
         string bUrl = "&password=";
-        public Authentication()
+        
+        public Authentications()
         {
+
             InitializeComponent();
             btnLogin.Clicked += async (s, e) =>
             {
@@ -29,61 +30,42 @@ namespace YeKarlo
                 }
                 else
                 {
-                    LDatum result = await GetData(UserName, Password);
+                    Result result = await GetData(UserName, Password);
                     if(result== null)
                     {
                         DisplayAlert("Error", "User Credintials Failed", "Sign In Again");
                     }
                     else
                     {
-                        DisplayAlert("Msg", "Authenticated", "Ok");
+                        Constants.MyDetails = result;
+                        App.Current.MainPage = new Views.MenuPage();
+                        //App.Current.MainPage = new Views.Drawers.EventF.Events();
+                        //await Navigation.PushAsync(new Views.Drawers.EventF.Events());
+
                     }
                     
                     
-
                 }
             };
         }
 
 
 
-
-
-
-
-        private async Task<LDatum> GetData(string UserName, string Password)
+        public async Task<Result> GetData(string UserName, string Password)
         {
             
             string urls = baseUrl + UserName + bUrl + Password;
             HttpClient wp = new HttpClient();
             string data = await wp.GetStringAsync(urls);
-           dynamic jobj = JsonConvert.DeserializeObject<LRootObject>(data);
-
-            //var retData = (string)jobj.data;
-            //if (retData == "Login Failed")
-            //{
-            //    return aaa;
-            //}
-            //else
-            //{
-                
-            //    var ghfh = (List<LDatum>)jobj.data;
-            //    foreach (var asd in ghfh)
-            //    {
-
-            //         aaa= asd.id;
-            //    }
-            //    return aaa;
-            //}
-
-
-
-            if(jobj.data.ToString() != "Login Failed")
+            dynamic jobj = JsonConvert.DeserializeObject<RootObject>(data);
+            if(jobj.Result.ToString() != "Login Failed")
             {
-                List<LDatum> ress = new List<LDatum>();
-                ress = jobj.data.ToObject<List<LDatum>>();
+                List<Result> ress = new List<Result>();
+                ress = jobj.Result.ToObject<List<Result>>();
                 return ress[0];
             }
+
+
             return null;
             
         }

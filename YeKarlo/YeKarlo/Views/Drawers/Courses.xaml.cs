@@ -8,27 +8,33 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace YeKarlo
+namespace YeKarlo.Views.Drawers
 {
-    public partial class HomePage : ContentPage
+    public partial class Courses : ContentPage
     {
         string getCourseApi = "http://yekarlo.hol.es/Controller/GetCourses.php";
-         public HomePage()
+        public Courses()
         {
             InitializeComponent();
+          
+        }
 
-            
-            btn.Clicked += async (s, e) =>
-            {
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Device.BeginInvokeOnMainThread(async () => {
+
                 var getData = await GJson();
                 lView.ItemsSource = getData;
-            };
 
+            });
         }
 
         private async Task<List<Datum>> GJson()
         {
             HttpClient webClient = new HttpClient();
+            
             string result = await webClient.GetStringAsync(getCourseApi);
 
 

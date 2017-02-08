@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="YeKarlo.Views.DrawerPage">
+
+  <StackLayout Orientation="Vertical">
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="10"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="10"/>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height ="30"/>
+        <RowDefinition Height ="80"/>
+        <RowDefinition Height ="Auto"/>
+
+      </Grid.RowDefinitions>
+      <BoxView Grid.ColumnSpan="3"
+               Grid.RowSpan="3" x:Name="bxView"/>
+      <Image
+        x:Name="img"
+        Grid.Column="1"
+        Grid.Row="1"
+        HorizontalOptions="CenterAndExpand"
+        VerticalOptions="End"
+        WidthRequest="75" HeightRequest="75"/>
+      <Label x:Name="myName"
+             HorizontalTextAlignment="Center"
+             Grid.Column="1"
+             Grid.Row="2"/>
+    </Grid>
+
+    <ListView x:Name="listed" SeparatorColor="Transparent" >
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <Grid Padding="20,0,0,0" BackgroundColor="Transparent">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width ="Auto"/>
+                <ColumnDefinition Width ="20"/>
+                <ColumnDefinition Width ="*"/>
+              </Grid.ColumnDefinitions>
+              <Image Source="{Binding Icon}" Grid.Column="0" HeightRequest="25" WidthRequest="25"/>
+              <Label Text="{Binding Name}" Grid.Column="2" VerticalTextAlignment="Center"/>
+            </Grid>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+</ContentPage>

@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="YeKarlo.Authentication">
+             x:Class="YeKarlo.Auth.Authentications">
   <StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="20">
-    <Entry x:Name="usrName" Placeholder="User Name" />
-    <Entry x:Name="pass" Placeholder="Password" />
+    <Entry x:Name="usrName" Placeholder="User Name" Text ="abhilash.deshmukh98@gmail.com" />
+    <Entry x:Name="pass" Placeholder="Password" IsPassword="True" Text="abhilash"/>
     <Button x:Name="btnLogin" Text="Login"/>
   </StackLayout>
 
